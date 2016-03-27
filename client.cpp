@@ -21,7 +21,7 @@ DWORD WINAPI ProcessClient(LPVOID arg)
 	if(strlen == -1) cout<<"메시지 수신 실패"<<endl;
 	cout<<sendmessage<<endl;
 	return 0;
-	ExitThread((DWORD)ProcessClient);
+	//ExitThread((DWORD)ProcessClient);
 }
 
 int main(int argc, char *argv[])
@@ -74,12 +74,9 @@ int main(int argc, char *argv[])
 		break;
 	}
 	send(clientsock, sendmessage, sizeof(sendmessage)-1, 0);	
-	
-	
 	hThread = CreateThread(NULL, 0, ProcessClient, (LPVOID)clientsock, 0, &ThreadID);
+	TerminateThread(hThread, (DWORD)ProcessClient); // 쓰레드 종료..
 	}
-
-	
 	
 	closesocket(clientsock);
  
