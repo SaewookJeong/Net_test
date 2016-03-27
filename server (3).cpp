@@ -16,7 +16,7 @@ DWORD WINAPI ProcessClient(LPVOID arg)
    clientsize = sizeof(clientinfo);
    getpeername(clientsock, (SOCKADDR*)&clientinfo, &clientsize);
    //함수는 소켓이 연결되어 있는 원격지 상대방(peer)의 이름(인터페이스 어드레스와 포트번호)을 얻는 함수입니다.
-  
+ 
    if(clientsock==INVALID_SOCKET) cout<<"클라이언트 소켓 연결 실패 "<<endl;
 	cout<<"Connect"<<endl;
 		while(1){

@@ -75,6 +75,7 @@ int main(int argc, char *argv[])
 	}
 	send(clientsock, sendmessage, sizeof(sendmessage)-1, 0);	
 	hThread = CreateThread(NULL, 0, ProcessClient, (LPVOID)clientsock, 0, &ThreadID);
+	Sleep(10);
 	TerminateThread(hThread, (DWORD)ProcessClient); // 쓰레드 종료..
 	}
 	
