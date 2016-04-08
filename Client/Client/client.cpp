@@ -18,7 +18,7 @@ DWORD WINAPI ProcessClient(LPVOID arg)
    getpeername(clientsock, (SOCKADDR*)&clientinfo, &clientsize);
    //함수는 소켓이 연결되어 있는 원격지 상대방(peer)의 이름(인터페이스 어드레스와 포트번호)을 얻는 함수입니다.
    */
-    
+    for(int i = 0; i < 1024; i ++)sendmessage[i]=0;
 	strlen=recv(clientsock , sendmessage, sizeof(sendmessage), 0);
 	if(strlen == -1) cout<<"메시지 수신 실패"<<endl;
 	cout<<sendmessage<<endl;
@@ -69,6 +69,7 @@ int main(int argc, char *argv[])
 	DWORD ThreadID;     // 스레드 아이디
 	
 	while(1){
+	//for(int i = 0; i < 1024; i ++) sendmessage[i]=0;
 	hThread = CreateThread(NULL, 0, ProcessClient, (LPVOID)clientsock, 0, &ThreadID);
 	cin>>sendmessage;
 	if((strcmp(sendmessage, "quit") == 0))
